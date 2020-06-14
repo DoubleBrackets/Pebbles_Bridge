@@ -5349,7 +5349,7 @@ PrefabInstance:
       objectReference: {fileID: 1220315473}
     - target: {fileID: 1232151443, guid: 3cdfe441f4437934484452e8f70c60fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RestartGame
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 1232151443, guid: 3cdfe441f4437934484452e8f70c60fe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -5369,7 +5369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1254211174, guid: 3cdfe441f4437934484452e8f70c60fe, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1996742418, guid: 3cdfe441f4437934484452e8f70c60fe, type: 3}
       propertyPath: m_LocalPosition.z
