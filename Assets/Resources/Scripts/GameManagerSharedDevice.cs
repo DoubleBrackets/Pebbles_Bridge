@@ -34,7 +34,7 @@ public class GameManagerSharedDevice : MonoBehaviour
     private int selectedYIndex;
     private Color defaultColor;
 
-    private GamePieceSharedDevice[,] board;
+    private GamePiece[,] board;
 
     private float unitsPerSquare = 2;
 
@@ -56,7 +56,7 @@ public class GameManagerSharedDevice : MonoBehaviour
     private void Awake()
     {
         gameManagerSharedDevice = this;
-        board = new GamePieceSharedDevice[7,7];
+        board = new GamePiece[7,7];
 
         hoverIndicatorObject = Instantiate(hoverPrefab, Vector2.zero, Quaternion.identity);
         defaultColor = hoverIndicatorObject.GetComponent<MeshRenderer>().material.color;
@@ -168,7 +168,7 @@ public class GameManagerSharedDevice : MonoBehaviour
             board[6, columnIndex].RemovePiece(7, columnIndex);
             board[6, columnIndex] = null;
         }
-        GamePieceSharedDevice[] newColumn = new GamePieceSharedDevice[7];
+        GamePiece[] newColumn = new GamePiece[7];
 
         for (int x = 1; x <= upTo; x++)
         {
@@ -193,7 +193,7 @@ public class GameManagerSharedDevice : MonoBehaviour
             board[0, columnIndex].RemovePiece(-1, columnIndex);
             board[0, columnIndex] = null;
         }
-        GamePieceSharedDevice[] newColumn = new GamePieceSharedDevice[7];
+        GamePiece[] newColumn = new GamePiece[7];
 
         for(int x = 5;x >= upTo;x--)
         {
@@ -275,7 +275,7 @@ public class GameManagerSharedDevice : MonoBehaviour
             board[lastRow, columnIndex + dir * lastRow] = null;
         }
 
-        GamePieceSharedDevice[] newDiagonal = new GamePieceSharedDevice[7];//Diagonal
+        GamePiece[] newDiagonal = new GamePiece[7];//Diagonal
 
         for (int x = 1; x <= upTo; x++)
         {
@@ -307,7 +307,7 @@ public class GameManagerSharedDevice : MonoBehaviour
             board[lastRow, columnIndex + dir * (6 - lastRow)] = null;
         }
 
-        GamePieceSharedDevice[] newDiagonal = new GamePieceSharedDevice[7];//Diagonal
+        GamePiece[] newDiagonal = new GamePiece[7];//Diagonal
 
         for (int x = 5; x >= upTo; x--)
         {
@@ -426,7 +426,7 @@ public class GameManagerSharedDevice : MonoBehaviour
             stoneGameObject = Instantiate(stonePrefab1,new Vector3((xIndex+xOffset)*unitsPerSquare,0,(6-yIndex-yOffset)*unitsPerSquare),Quaternion.identity);
         else
             stoneGameObject = Instantiate(stonePrefab2, new Vector3((xIndex + xOffset) * unitsPerSquare, 0, (6 - yIndex - yOffset) * unitsPerSquare), Quaternion.identity);
-        GamePieceSharedDevice newPiece = new GamePieceSharedDevice(stoneGameObject, player, xIndex, yIndex);
+        GamePiece newPiece = new GamePiece(stoneGameObject, player, xIndex, yIndex);
         board[yIndex, xIndex] = newPiece;
         DecrementStoneCount(player);
     }
@@ -524,31 +524,4 @@ public class GameManagerSharedDevice : MonoBehaviour
             return p2StoneCount;
     }
 }
-class GamePieceSharedDevice
-{
-    public GamePieceSharedDevice(GameObject gameObject, int player, int xSquare, int ySquare)
-    {
-        this.pieceGameObject = gameObject;
-        this.player = player;
-        this.xSquare = xSquare;
-        this.ySquare = ySquare;
-    }
 
-    public void RemovePiece(int yIndex,int xIndex)
-    {
-        if(yIndex > 6 && player == 1)
-        {
-            GameManagerSharedDevice.gameManagerSharedDevice.IncrementStoneCount(1);
-        }
-        else if(yIndex < 0 && player == 2)
-        {
-            GameManagerSharedDevice.gameManagerSharedDevice.IncrementStoneCount(2);
-        }
-        GameObject.Destroy(pieceGameObject);
-    }
-
-    public GameObject pieceGameObject;
-    public int player;
-    public int xSquare;
-    public int ySquare;
-}

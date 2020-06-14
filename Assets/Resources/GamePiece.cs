@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity;
 
 public class GamePiece
 {
+    private float unitsPerSquare = 2;
     public GamePiece(GameObject gameObject, int player, int xSquare, int ySquare)
     {
         this.pieceGameObject = gameObject;
@@ -14,19 +16,37 @@ public class GamePiece
 
     public void RemovePiece(int yIndex, int xIndex)
     {
+        Vector3 pos = new Vector3(xIndex * unitsPerSquare, 0, (6 - yIndex) * unitsPerSquare);
+        GamePieceHelperClass helper = GamePieceHelperClass.gamePieceHelperClass;
         if (yIndex > 6 && player == 1)
         {
-            GameManager.gameManager.IncrementStoneCount(1);
+            if (GameManager.gameManager == null)
+                GameManagerSharedDevice.gameManagerSharedDevice.IncrementStoneCount(1);
+            else
+                GameManager.gameManager.IncrementStoneCount(1);
+            helper.ReturnPiece(pieceGameObject,pos);
         }
         else if (yIndex < 0 && player == 2)
         {
-            GameManager.gameManager.IncrementStoneCount(2);
+            if (GameManager.gameManager == null)
+                GameManagerSharedDevice.gameManagerSharedDevice.IncrementStoneCount(2);
+            else
+                GameManager.gameManager.IncrementStoneCount(2);
+            helper.ReturnPiece(pieceGameObject,pos);
         }
-        GameObject.Destroy(pieceGameObject);
+        else
+        {
+            helper.DeletePiece(pieceGameObject,pos);
+        }
     }
+
+    
+
+    
 
     public GameObject pieceGameObject;
     public int player;
     public int ySquare;
     public int xSquare;
 }
+
