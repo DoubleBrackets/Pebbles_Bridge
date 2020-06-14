@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323601497313994235}
-  - component: {fileID: 1323601497313994234}
+  - component: {fileID: 1629845196713272114}
   m_Layer: 0
   m_Name: GameManagerSharedDevice
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1323601497313994234
+--- !u!114 &1629845196713272114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1323601497313994228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 203c522eb3f01314f8dbe10d9586cf09, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bbb0c0a7bdd6214b90c64e17794ae3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stonePrefab1: {fileID: 8730601472045285346, guid: f832a4ea98476204cbc950b7f7b5f177,
@@ -51,5 +51,5 @@ MonoBehaviour:
     type: 3}
   gridPrefab: {fileID: 6584558999363367439, guid: a1167c96a2015514ba8c5222236aae7c,
     type: 3}
-  actionColor: {r: 0.3726415, g: 1, b: 0.6767419, a: 0.40392157}
+  actionColor: {r: 1, g: 0.9777129, b: 0.7877358, a: 0.34901962}
   startStoneCount: 35
