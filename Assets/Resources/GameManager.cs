@@ -51,6 +51,8 @@ public class GameManager : MonoBehaviour, IPunObservable
 
     public bool methodReturnContainer;
 
+    private int piecesToWin = 2;
+
     private void Awake()
     {
         gameManager = this;
@@ -349,23 +351,33 @@ public class GameManager : MonoBehaviour, IPunObservable
 
     private void CheckForGameEnd()//Checks if game has ended
     {
+        int counter = 0;
         for(int x = 0;x < 7;x++)//Checks if any player 1 stones
         {
             if (board[0,x] != null && board[0, x].player == 1)
             {
-                EndGame(1);
-                return;
+                counter++;
             }
         }
+        if(counter >= piecesToWin)
+        {
+            EndGame(1);
+            return;
+        }
+        counter = 0;
         for (int x = 0; x < 7; x++)//Checks if any player 1 stones
         {
             if (board[6, x] != null && board[6, x].player == 2)
             {
-                EndGame(2);
-                return;
+                counter++;
             }
         }
-        if(p1StoneCount == 0 && p2StoneCount == 0)
+        if (counter >= piecesToWin)
+        {
+            EndGame(2);
+            return;
+        }
+        if (p1StoneCount == 0 && p2StoneCount == 0)
         {
             EndGame(0);
             return;
