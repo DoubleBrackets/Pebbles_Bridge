@@ -53,7 +53,7 @@ public class GameManagerSharedDevice : MonoBehaviour
 
     private bool gameEnded = false;
 
-    private int piecesToWin = 2;
+    private int piecesToWin = 3;
 
     private void Awake()
     {

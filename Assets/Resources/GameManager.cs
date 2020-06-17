@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour, IPunObservable
 
     public bool methodReturnContainer;
 
-    private int piecesToWin = 2;
+    private int piecesToWin = 3;
 
     private void Awake()
     {
