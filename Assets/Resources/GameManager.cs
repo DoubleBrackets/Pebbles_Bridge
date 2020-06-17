@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour, IPunObservable
 
         if (board[7, columnIndex] != null && upTo == 7)//Last piece is pushed off board
         {
-            board[7, columnIndex].RemovePiece(8, columnIndex);
+            board[7, columnIndex].RemovePiece(9, columnIndex);
             board[7, columnIndex] = null;
         }
         GamePiece[] newColumn = new GamePiece[8];
