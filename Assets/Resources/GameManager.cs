@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour, IPunObservable
      * index [0,0]
      * <Left    Board   Right >
      * 
-     *                         index [6,6]
+     *                         index [7,7]
      * Down  v
      * 
      * Player 1
@@ -56,10 +56,10 @@ public class GameManager : MonoBehaviour, IPunObservable
     private void Awake()
     {
         gameManager = this;
-        board = new GamePiece[7,7];
+        board = new GamePiece[8,8];
 
         p1StoneCount = startStoneCount;
-        p2StoneCount = startStoneCount+3;
+        p2StoneCount = startStoneCount;
 
         UpdateGamePiecePositions();
         //CreateGrid();
@@ -89,12 +89,12 @@ public class GameManager : MonoBehaviour, IPunObservable
         }
 
 
-        if (board[6, columnIndex] != null && upTo == 6)//Last piece is pushed off board
+        if (board[7, columnIndex] != null && upTo == 7)//Last piece is pushed off board
         {
-            board[6, columnIndex].RemovePiece(7, columnIndex);
-            board[6, columnIndex] = null;
+            board[7, columnIndex].RemovePiece(8, columnIndex);
+            board[7, columnIndex] = null;
         }
-        GamePiece[] newColumn = new GamePiece[7];
+        GamePiece[] newColumn = new GamePiece[8];
 
         for (int x = 1; x <= upTo; x++)
         {
@@ -130,14 +130,14 @@ public class GameManager : MonoBehaviour, IPunObservable
             board[0, columnIndex].RemovePiece(-1, columnIndex);
             board[0, columnIndex] = null;
         }
-        GamePiece[] newColumn = new GamePiece[7];
+        GamePiece[] newColumn = new GamePiece[8];
 
-        for(int x = 5;x >= upTo;x--)
+        for(int x = 6;x >= upTo;x--)
         {
             newColumn[x] = board[x+1, columnIndex];
         }
 
-        for(int x = 6; x >= upTo; x--)
+        for(int x = 7; x >= upTo; x--)
         {
             board[x, columnIndex] = newColumn[x];
         }
@@ -149,10 +149,7 @@ public class GameManager : MonoBehaviour, IPunObservable
     {
         int p1Count = 0;
         int p2Count = 0;
-
-        int changeCounter = 0;
-        int prev = 0;
-        for (int x = 0; x < 7; x++)
+        for (int x = 0; x < 8; x++)
         {
             if (board[x, columnIndex] == null)
             {
@@ -162,36 +159,15 @@ public class GameManager : MonoBehaviour, IPunObservable
             }
             else if (board[x, columnIndex].player == 1)
             {
-                if (prev != 1)
-                {
-                    changeCounter++;
-                    prev = 1;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p2Count >= p1Count)
-                        p2Count = 1000;
-                }
                 p1Count++;
             }
             else if (board[x, columnIndex].player == 2)
             {
-                if (prev != 2)
-                {
-                    changeCounter++;
-                    prev = 2;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p2Count >= p1Count)
-                        p2Count = 1000;
-                }
                 p2Count++;
-
             }
         }
         if (p2Count >= p1Count)
-            return 6;
+            return 7;
         return -1;
     }
 
@@ -200,9 +176,7 @@ public class GameManager : MonoBehaviour, IPunObservable
         int p1Count = 0;
         int p2Count = 0;
 
-        int changeCounter = 0;
-        int prev = 0;
-        for (int x = 6; x >= 0; x--)
+        for (int x = 7; x >= 0; x--)
         {
             if (board[x, columnIndex] == null)
             {
@@ -212,30 +186,10 @@ public class GameManager : MonoBehaviour, IPunObservable
             }
             else if (board[x, columnIndex].player == 1)
             {
-                if (prev != 1)
-                {
-                    changeCounter++;
-                    prev = 1;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p1Count >= p2Count)
-                        p1Count = 1000;
-                }
                 p1Count++;
             }
             else if (board[x, columnIndex].player == 2)
             {
-                if (prev != 2)
-                {
-                    changeCounter++;
-                    prev = 2;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p1Count >= p2Count)
-                        p1Count = 1000;
-                }
                 p2Count++;
             }
         }
@@ -261,7 +215,7 @@ public class GameManager : MonoBehaviour, IPunObservable
         }
         int lastRow;//Last row in the diagonal
         if (dir == 1)
-            lastRow = ((6 - columnIndex));
+            lastRow = ((7 - columnIndex));
         else
             lastRow = ((columnIndex));
 
@@ -271,7 +225,7 @@ public class GameManager : MonoBehaviour, IPunObservable
             board[lastRow, columnIndex + dir * lastRow] = null;
         }
 
-        GamePiece[] newDiagonal = new GamePiece[7];//Diagonal
+        GamePiece[] newDiagonal = new GamePiece[8];//Diagonal
 
         for (int x = 1; x <= upTo; x++)
         {
@@ -303,27 +257,27 @@ public class GameManager : MonoBehaviour, IPunObservable
 
         int lastRow;//Last row in the diagonal
         if (dir == 1)
-            lastRow = (6 - (6 - columnIndex));
+            lastRow = (7 - (7 - columnIndex));
         else
-            lastRow = (6 - (columnIndex));
+            lastRow = (7 - (columnIndex));
 
 
-        if (upTo == lastRow && board[lastRow, columnIndex + dir * (6-lastRow)] != null)//Last piece in diagonal is pushed off board
+        if (upTo == lastRow && board[lastRow, columnIndex + dir * (7-lastRow)] != null)//Last piece in diagonal is pushed off board
         {
-            board[lastRow, columnIndex + dir * (6 - lastRow)].RemovePiece(lastRow - 1, columnIndex + dir * (6 - lastRow) + dir);
-            board[lastRow, columnIndex + dir * (6 - lastRow)] = null;
+            board[lastRow, columnIndex + dir * (7 - lastRow)].RemovePiece(lastRow - 1, columnIndex + dir * (7 - lastRow) + dir);
+            board[lastRow, columnIndex + dir * (7 - lastRow)] = null;
         }
 
-        GamePiece[] newDiagonal = new GamePiece[7];//Diagonal
-
-        for (int x = 5; x >= upTo; x--)
-        {
-            newDiagonal[x] = board[x + 1, columnIndex + dir * (6 - (x + 1))];
-        }
+        GamePiece[] newDiagonal = new GamePiece[8];//Diagonal
 
         for (int x = 6; x >= upTo; x--)
         {
-            board[x, columnIndex + dir * (6 - x)] = newDiagonal[x];
+            newDiagonal[x] = board[x + 1, columnIndex + dir * (7 - (x + 1))];
+        }
+
+        for (int x = 7; x >= upTo; x--)
+        {
+            board[x, columnIndex + dir * (7 - x)] = newDiagonal[x];
         }
         methodReturnContainer = true;
         return true;
@@ -335,47 +289,25 @@ public class GameManager : MonoBehaviour, IPunObservable
         int p2Count = 0;
         int lastRow;
 
-        int prev = 0;
-        int changeCounter = 0;
         if (direction == 1)
-            lastRow = (6 - (6 - columnIndex));
+            lastRow = (7 - (7 - columnIndex));
         else
-            lastRow = (6 - (columnIndex));
+            lastRow = (7 - (columnIndex));
 
-        for (int x = 6; x >= lastRow; x--)
+        for (int x = 7; x >= lastRow; x--)
         {
-            if (board[x, columnIndex + ((6 - x) * direction)] == null)
+            if (board[x, columnIndex + ((7 - x) * direction)] == null)
             {
                 if (p1Count >= p2Count)
                     return x;
                 return -1;
             }
-            else if (board[x, columnIndex + ((6 - x) * direction)].player == 1)
+            else if (board[x, columnIndex + ((7 - x) * direction)].player == 1)
             {
-                if (prev != 1)
-                {
-                    changeCounter++;
-                    prev = 1;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p1Count >= p2Count)
-                        p1Count = 1000;
-                }
                 p1Count++;
             }
-            else if (board[x, columnIndex + ((6 - x) * direction)].player == 2)
+            else if (board[x, columnIndex + ((7 - x) * direction)].player == 2)
             {
-                if (prev != 2)
-                {
-                    changeCounter++;
-                    prev = 2;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p1Count >= p2Count)
-                        p1Count = 1000;
-                }
                 p2Count++;
             }
         }
@@ -390,11 +322,8 @@ public class GameManager : MonoBehaviour, IPunObservable
         int p2Count = 0;
         int lastRow;
 
-        int changeCounter = 0;
-        int prev = 0;
-
         if (direction == 1)
-            lastRow = ((6 - columnIndex));
+            lastRow = ((7 - columnIndex));
         else
             lastRow = ((columnIndex));
         for (int x = 0; x <= lastRow; x++)
@@ -407,30 +336,10 @@ public class GameManager : MonoBehaviour, IPunObservable
             }
             else if (board[x, columnIndex + x * direction].player == 1)
             {
-                if (prev != 1)
-                {
-                    changeCounter++;
-                    prev = 1;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p2Count >= p1Count)
-                        p2Count = 1000;
-                }
                 p1Count++;
             }
             else if (board[x, columnIndex + x * direction].player == 2)
             {
-                if (prev != 2)
-                {
-                    changeCounter++;
-                    prev = 2;
-                }
-                if (changeCounter == 3)
-                {
-                    if (p2Count >= p1Count)
-                        p2Count = 1000;
-                }
                 p2Count++;
             }
         }
@@ -444,7 +353,7 @@ public class GameManager : MonoBehaviour, IPunObservable
     private void CheckForGameEnd()//Checks if game has ended
     {
         int counter = 0;
-        for(int x = 0;x < 7;x++)//Checks if any player 1 stones
+        for(int x = 0;x < 8;x++)//Checks if any player 1 stones
         {
             if (board[0,x] != null && board[0, x].player == 1)
             {
@@ -457,9 +366,9 @@ public class GameManager : MonoBehaviour, IPunObservable
             return;
         }
         counter = 0;
-        for (int x = 0; x < 7; x++)//Checks if any player 1 stones
+        for (int x = 0; x < 8; x++)//Checks if any player 1 stones
         {
-            if (board[6, x] != null && board[6, x].player == 2)
+            if (board[7, x] != null && board[7, x].player == 2)
             {
                 counter++;
             }
@@ -495,9 +404,9 @@ public class GameManager : MonoBehaviour, IPunObservable
     {
         GameObject stoneGameObject;
         if(player == 1)
-            stoneGameObject = Instantiate(stonePrefab1,new Vector3((xIndex+xOffset)*unitsPerSquare,0,(6-yIndex-yOffset)*unitsPerSquare),Quaternion.identity);
+            stoneGameObject = Instantiate(stonePrefab1,new Vector3((xIndex+xOffset)*unitsPerSquare,0,(7-yIndex-yOffset)*unitsPerSquare),Quaternion.identity);
         else
-            stoneGameObject = Instantiate(stonePrefab2, new Vector3((xIndex + xOffset) * unitsPerSquare, 0, (6 - yIndex - yOffset) * unitsPerSquare), Quaternion.identity);
+            stoneGameObject = Instantiate(stonePrefab2, new Vector3((xIndex + xOffset) * unitsPerSquare, 0, (7 - yIndex - yOffset) * unitsPerSquare), Quaternion.identity);
         GamePiece newPiece = new GamePiece(stoneGameObject, player, xIndex, yIndex);
         board[yIndex, xIndex] = newPiece;
         DecrementStoneCount(player);
@@ -520,16 +429,16 @@ public class GameManager : MonoBehaviour, IPunObservable
         isUpdatingPositions = true;
         for (int i = 0;i <= 20;i++)
         {
-            for (int y = 0; y < 7; y++)
+            for (int y = 0; y < 8; y++)
             {
-                for (int x = 0; x < 7; x++)
+                for (int x = 0; x < 8; x++)
                 {
                     if (board[y, x] != null && board[y,x].pieceGameObject != null)
                     {
                         board[y, x].ySquare = y;
                         board[y, x].xSquare = x;
                         Vector3 originalPos = board[y, x].pieceGameObject.transform.position;
-                        board[y, x].pieceGameObject.transform.position = Vector3.Lerp(originalPos,new Vector3(x * unitsPerSquare, 0, (6 - y) * unitsPerSquare),0.2f);
+                        board[y, x].pieceGameObject.transform.position = Vector3.Lerp(originalPos,new Vector3(x * unitsPerSquare, 0, (7 - y) * unitsPerSquare),0.2f);
                     }
                 }
             }        
@@ -542,9 +451,9 @@ public class GameManager : MonoBehaviour, IPunObservable
 
     void CreateGrid()
     {
-        for(int y = 0;y < 7;y++)
+        for(int y = 0;y < 8;y++)
         {
-            for(int x = 0;x < 7;x++)
+            for(int x = 0;x < 8;x++)
             {
                 Instantiate(gridPrefab, new Vector3(x * unitsPerSquare, 0, y * unitsPerSquare),Quaternion.identity);
             }
@@ -617,9 +526,9 @@ public class GameManager : MonoBehaviour, IPunObservable
     void SendBoardData()
     {
         PhotonView pView = PhotonView.Get(this);
-        for (int y = 0; y < 7; y++)
+        for (int y = 0; y < 8; y++)
         {
-            for (int x = 0; x < 7; x++)
+            for (int x = 0; x < 8; x++)
             {
                 GamePiece p = board[y, x];
                 if (p == null)
@@ -692,9 +601,9 @@ public class GameManager : MonoBehaviour, IPunObservable
     /*
     private void SendBoardData(PhotonStream stream)
     {
-        for(int y = 0;y < 7;y++)
+        for(int y = 0;y < 8;y++)
         {
-            for(int x = 0;x < 7;x++)
+            for(int x = 0;x < 8;x++)
             {
                 GamePiece p = board[y, x];
                 if(p == null)
@@ -720,9 +629,9 @@ public class GameManager : MonoBehaviour, IPunObservable
 
     private void ReceiveBoardData(PhotonStream stream)
     {
-        for (int y = 0; y < 7; y++)
+        for (int y = 0; y < 8; y++)
         {
-            for (int x = 0; x < 7; x++)
+            for (int x = 0; x < 8; x++)
             {
                 int receivePlayer = (int)stream.ReceiveNext();
                 int receiveYSquare = (int)stream.ReceiveNext();

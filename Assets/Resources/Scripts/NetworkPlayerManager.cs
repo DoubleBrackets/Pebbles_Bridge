@@ -57,11 +57,11 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             Vector3 mousePos = mouseRay.GetPoint(dist);
 
-            float xSquare = Mathf.Clamp(Mathf.Round(mousePos.x / unitsPerSquare), 0, 6);
-            float zSquare = Mathf.Clamp(Mathf.Round(mousePos.z / unitsPerSquare), 0, 6);
+            float xSquare = Mathf.Clamp(Mathf.Round(mousePos.x / unitsPerSquare), 0, 7);
+            float zSquare = Mathf.Clamp(Mathf.Round(mousePos.z / unitsPerSquare), 0, 7);
             hoverIndicatorObject.transform.position = new Vector3(xSquare * unitsPerSquare, 0, zSquare * unitsPerSquare);
             selectedXIndex = (int)xSquare;
-            selectedYIndex = 6 - (int)zSquare;
+            selectedYIndex = 7 - (int)zSquare;
         }
         //Controls
         if (!GameManager.gameManager.GetIsUpdatingPositions())
@@ -75,7 +75,6 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     bool UserInput()
     {
-        print(GameManager.gameManager.turn);
         if (Input.GetMouseButtonDown(0))
         {
             firstXIndex = selectedXIndex;
@@ -114,14 +113,14 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     }
                 }
             }
-            else if (yChange == -1 && GameManager.gameManager.turn == 1 && playerId == 1 && firstyIndex == 6)//Pushing(p1)
+            else if (yChange == -1 && GameManager.gameManager.turn == 1 && playerId == 1 && firstyIndex == 7)//Pushing(p1)
             {
                 if (xChange == 0)
                 {
                     GameManager.gameManager.PushColumn(firstXIndex);
                     if (GameManager.gameManager.methodReturnContainer)
                     {
-                        GameManager.gameManager.PlaceStone(6, firstXIndex, 1, 0, 1);
+                        GameManager.gameManager.PlaceStone(7, firstXIndex, 1, 0, 1);
                         if (GameManager.gameManager.GetP2StoneCount() > 0)
                             GameManager.gameManager.SetTurn(2);
                         return true;
@@ -132,7 +131,7 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                     GameManager.gameManager.PushDiagonal(firstXIndex, xChange);
                     if(GameManager.gameManager.methodReturnContainer)
                     {
-                        GameManager.gameManager.PlaceStone(6, firstXIndex, 1, -xChange, 1);
+                        GameManager.gameManager.PlaceStone(7, firstXIndex, 1, -xChange, 1);
                         if (GameManager.gameManager.GetP2StoneCount() > 0)
                             GameManager.gameManager.SetTurn(2);
                         return true;
@@ -146,7 +145,7 @@ public class NetworkPlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void CenterCamera(int player)
     {
-        Camera.main.transform.position = new Vector3(3f * unitsPerSquare, 17, 3f * unitsPerSquare);
+        Camera.main.transform.position = new Vector3(3.5f * unitsPerSquare, 18, 3.5f * unitsPerSquare);
         Camera.main.transform.rotation = Quaternion.Euler(new Vector3(90, (player-1) * 180, 0));
     }
 
