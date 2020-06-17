@@ -64,7 +64,7 @@ public class GameManagerSharedDevice : MonoBehaviour
         defaultColor = hoverIndicatorObject.GetComponent<MeshRenderer>().material.color;
 
         p1StoneCount = startStoneCount;
-        p2StoneCount = startStoneCount;
+        p2StoneCount = startStoneCount+3;
 
         CenterCamera();
         //CreateGrid();
@@ -429,6 +429,7 @@ public class GameManagerSharedDevice : MonoBehaviour
     {
         gameEnded = true;
         ScoreboardScript.scoreboardScript.EndGame(result);
+        turn = 0;
     }
 
     private void PlaceStone(int yIndex, int xIndex,int player,int xOffset, int yOffset)//Places stone(note, replaces any stone on the square, push/ pull first)

@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour, IPunObservable
         board = new GamePiece[7,7];
 
         p1StoneCount = startStoneCount;
-        p2StoneCount = startStoneCount;
+        p2StoneCount = startStoneCount+3;
 
         UpdateGamePiecePositions();
         //CreateGrid();
@@ -388,6 +388,7 @@ public class GameManager : MonoBehaviour, IPunObservable
     {
         gameEnded = true;
         ScoreboardScript.scoreboardScript.EndGame(result);
+        SetTurn(0);
     }
 
     public void PlaceStone(int yIndex, int xIndex, int player, int xOffset, int yOffset)
