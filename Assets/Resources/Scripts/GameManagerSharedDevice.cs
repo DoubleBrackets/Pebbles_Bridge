@@ -213,21 +213,45 @@ public class GameManagerSharedDevice : MonoBehaviour
     {
         int p1Count = 0;
         int p2Count = 0;
-        for(int x = 0;x < 7;x++)
+
+        int changeCounter = 0;
+        int prev = 0;
+        for (int x = 0; x < 7; x++)
         {
-            if(board[x,columnIndex] == null)
+            if (board[x, columnIndex] == null)
             {
                 if (p2Count >= p1Count)
                     return x;
                 return -1;
             }
-            else if(board[x,columnIndex].player == 1)
+            else if (board[x, columnIndex].player == 1)
             {
+                if (prev != 1)
+                {
+                    changeCounter++;
+                    prev = 1;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p2Count >= p1Count)
+                        p2Count = 1000;
+                }
                 p1Count++;
             }
             else if (board[x, columnIndex].player == 2)
             {
+                if (prev != 2)
+                {
+                    changeCounter++;
+                    prev = 2;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p2Count >= p1Count)
+                        p2Count = 1000;
+                }
                 p2Count++;
+
             }
         }
         if (p2Count >= p1Count)
@@ -239,6 +263,9 @@ public class GameManagerSharedDevice : MonoBehaviour
     {
         int p1Count = 0;
         int p2Count = 0;
+
+        int changeCounter = 0;
+        int prev = 0;
         for (int x = 6; x >= 0; x--)
         {
             if (board[x, columnIndex] == null)
@@ -249,10 +276,30 @@ public class GameManagerSharedDevice : MonoBehaviour
             }
             else if (board[x, columnIndex].player == 1)
             {
+                if (prev != 1)
+                {
+                    changeCounter++;
+                    prev = 1;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p1Count >= p2Count)
+                        p1Count = 1000;
+                }
                 p1Count++;
             }
             else if (board[x, columnIndex].player == 2)
             {
+                if (prev != 2)
+                {
+                    changeCounter++;
+                    prev = 2;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p1Count >= p2Count)
+                        p1Count = 1000;
+                }
                 p2Count++;
             }
         }
@@ -323,20 +370,22 @@ public class GameManagerSharedDevice : MonoBehaviour
         return true;
     }
 
-    private int CheckIfDiagonalPushable(int columnIndex,int direction)//Checks if p1 can push a diagonal, returns index of row where column is pushed to
+    private int CheckIfDiagonalPushable(int columnIndex, int direction)//Checks if p1 can push a diagonal, returns index of row where column is pushed to
     {
         int p1Count = 0;
         int p2Count = 0;
         int lastRow;
 
-        if(direction == 1)
+        int prev = 0;
+        int changeCounter = 0;
+        if (direction == 1)
             lastRow = (6 - (6 - columnIndex));
         else
             lastRow = (6 - (columnIndex));
 
         for (int x = 6; x >= lastRow; x--)
         {
-            if (board[x, columnIndex+ ((6-x)*direction)] == null)
+            if (board[x, columnIndex + ((6 - x) * direction)] == null)
             {
                 if (p1Count >= p2Count)
                     return x;
@@ -344,10 +393,30 @@ public class GameManagerSharedDevice : MonoBehaviour
             }
             else if (board[x, columnIndex + ((6 - x) * direction)].player == 1)
             {
+                if (prev != 1)
+                {
+                    changeCounter++;
+                    prev = 1;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p1Count >= p2Count)
+                        p1Count = 1000;
+                }
                 p1Count++;
             }
             else if (board[x, columnIndex + ((6 - x) * direction)].player == 2)
             {
+                if (prev != 2)
+                {
+                    changeCounter++;
+                    prev = 2;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p1Count >= p2Count)
+                        p1Count = 1000;
+                }
                 p2Count++;
             }
         }
@@ -361,6 +430,9 @@ public class GameManagerSharedDevice : MonoBehaviour
         int p1Count = 0;
         int p2Count = 0;
         int lastRow;
+
+        int changeCounter = 0;
+        int prev = 0;
 
         if (direction == 1)
             lastRow = ((6 - columnIndex));
@@ -376,10 +448,30 @@ public class GameManagerSharedDevice : MonoBehaviour
             }
             else if (board[x, columnIndex + x * direction].player == 1)
             {
+                if (prev != 1)
+                {
+                    changeCounter++;
+                    prev = 1;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p2Count >= p1Count)
+                        p2Count = 1000;
+                }
                 p1Count++;
             }
             else if (board[x, columnIndex + x * direction].player == 2)
             {
+                if (prev != 2)
+                {
+                    changeCounter++;
+                    prev = 2;
+                }
+                if (changeCounter == 3)
+                {
+                    if (p2Count >= p1Count)
+                        p2Count = 1000;
+                }
                 p2Count++;
             }
         }
