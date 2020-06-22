@@ -16,9 +16,9 @@ public class GamePiece
 
     public void RemovePiece(int yIndex, int xIndex)
     {
-        Vector3 pos = new Vector3(xIndex * unitsPerSquare, 0, (6 - yIndex) * unitsPerSquare);
+        Vector3 pos = new Vector3(xIndex * unitsPerSquare, 0, (7 - yIndex) * unitsPerSquare);
         GamePieceHelperClass helper = GamePieceHelperClass.gamePieceHelperClass;
-        if (yIndex > 6 && player == 1)
+        if (yIndex > 7 && player == 1)
         {
             if (GameManager.gameManager == null)
                 GameManagerSharedDevice.gameManagerSharedDevice.IncrementStoneCount(1);

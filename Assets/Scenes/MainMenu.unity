@@ -121,6 +121,116 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &15020199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1220155387, guid: bcf195f715839964b8b42522eb53f426,
+    type: 3}
+  m_PrefabInstance: {fileID: 146913167443294227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &15020201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15020199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b2a131cf2d91943bcbf5e1e3c34e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: Enter Username
+  chineseText: "\u8F93\u5165\u7528\u6237\u540D"
+  isInMainMenu: 1
+--- !u!1 &65874645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146913167837282889, guid: bcf195f715839964b8b42522eb53f426,
+    type: 3}
+  m_PrefabInstance: {fileID: 146913167443294227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &65874649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65874645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2685fec85c43e264d9a9b9dd521fe195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishFont: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10, type: 3}
+  chineseFont: {fileID: 12800000, guid: c0d63adc5c094224faa0f9e5a303f6a7, type: 3}
+  englishText: Shared Device
+  chineseText: "\u5171\u4EAB\u7535\u8111\u73A9\u513F"
+  isInMainMenu: 1
+--- !u!1 &112588742 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146913166383946444, guid: bcf195f715839964b8b42522eb53f426,
+    type: 3}
+  m_PrefabInstance: {fileID: 146913167443294227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &112588746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112588742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2685fec85c43e264d9a9b9dd521fe195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishFont: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10, type: 3}
+  chineseFont: {fileID: 12800000, guid: c0d63adc5c094224faa0f9e5a303f6a7, type: 3}
+  englishText: Over Network
+  chineseText: "\u4E0A\u7F51\u73A9\u513F"
+  isInMainMenu: 1
+--- !u!1 &324224907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 324224907, guid: bcf195f715839964b8b42522eb53f426,
+    type: 3}
+  m_PrefabInstance: {fileID: 146913167443294227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &324224911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324224907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c13df374a409f48883850902c9d48b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishFont: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10, type: 3}
+  chineseFont: {fileID: 12800000, guid: c0d63adc5c094224faa0f9e5a303f6a7, type: 3}
+--- !u!1 &924323982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 198559773, guid: bcf195f715839964b8b42522eb53f426,
+    type: 3}
+  m_PrefabInstance: {fileID: 146913167443294227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &924323983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924323982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2685fec85c43e264d9a9b9dd521fe195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishFont: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10, type: 3}
+  chineseFont: {fileID: 12800000, guid: c0d63adc5c094224faa0f9e5a303f6a7, type: 3}
+  englishText: Enter Username
+  chineseText: "\u8F93\u5165\u7528\u6237\u540D"
+  isInMainMenu: 1
 --- !u!1 &1244622591
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,15 +419,48 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 146913167276258272, guid: bcf195f715839964b8b42522eb53f426,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.1
+    - target: {fileID: 198559775, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_Text
+      value: Enter
       objectReference: {fileID: 0}
-    - target: {fileID: 146913167276258272, guid: bcf195f715839964b8b42522eb53f426,
+    - target: {fileID: 198559775, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.1
+    - target: {fileID: 324224909, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_Text
+      value: Language
+      objectReference: {fileID: 0}
+    - target: {fileID: 924323983, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: chineseFont
+      value: 
+      objectReference: {fileID: 12800000, guid: c0d63adc5c094224faa0f9e5a303f6a7,
+        type: 3}
+    - target: {fileID: 924323983, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: englishFont
+      value: 
+      objectReference: {fileID: 12800000, guid: 5ee86112ad653ef4eb08325a40d8bf10,
+        type: 3}
+    - target: {fileID: 924323983, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: englishText
+      value: Enter Username
+      objectReference: {fileID: 0}
+    - target: {fileID: 924323983, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: chineseText
+      value: "\u8F93\u5165\u7528\u6237\u540D"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220155391, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_Text
+      value: Enter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365773633, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 324224911}
+    - target: {fileID: 1365773633, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwapLanguages
       objectReference: {fileID: 0}
     - target: {fileID: 146913167940175695, guid: bcf195f715839964b8b42522eb53f426,
         type: 3}
@@ -429,5 +572,7 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6129092353057795150, guid: bcf195f715839964b8b42522eb53f426, type: 3}
+    - {fileID: 924323983, guid: bcf195f715839964b8b42522eb53f426, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bcf195f715839964b8b42522eb53f426, type: 3}
